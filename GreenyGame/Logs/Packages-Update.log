@@ -1,5 +1,5 @@
 
-=== Fri Oct 21 22:27:39 2022
+=== Sat Oct 22 03:39:40 2022
 
 Packages were changed.
 Update Mode: mergeDefaultDependencies
@@ -44,7 +44,3 @@ The following packages were added:
   com.unity.textmeshpro@3.0.6
   com.unity.timeline@1.4.8
   com.unity.ugui@1.0.0
-The following packages were updated:
-  com.unity.cinemachine from version 2.6.3 to 2.6.11
-  com.unity.inputsystem from version 1.0.2 to 1.2.0
-  com.unity.render-pipelines.high-definition from version 10.8.0 to 10.8.1
