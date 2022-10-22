@@ -219,6 +219,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -6893623213688390714, guid: f41127737f3399245981b7e4a543bfae, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6893623213688390714, guid: f41127737f3399245981b7e4a543bfae, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6893623213688390714, guid: f41127737f3399245981b7e4a543bfae, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e1233741b106a2a4ca91c0e7e3d250f1, type: 2}
@@ -231,9 +239,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -336259454244808723, guid: f41127737f3399245981b7e4a543bfae, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -336259454244808723, guid: f41127737f3399245981b7e4a543bfae, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -336259454244808723, guid: f41127737f3399245981b7e4a543bfae, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e1233741b106a2a4ca91c0e7e3d250f1, type: 2}
+    - target: {fileID: 551874974114560686, guid: f41127737f3399245981b7e4a543bfae, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 551874974114560686, guid: f41127737f3399245981b7e4a543bfae, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 551874974114560686, guid: f41127737f3399245981b7e4a543bfae, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -268,6 +292,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2768886340723834416, guid: f41127737f3399245981b7e4a543bfae, type: 3}
       propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537536052177310613, guid: f41127737f3399245981b7e4a543bfae, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537536052177310613, guid: f41127737f3399245981b7e4a543bfae, type: 3}
+      propertyPath: m_ReceiveShadows
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6537536052177310613, guid: f41127737f3399245981b7e4a543bfae, type: 3}

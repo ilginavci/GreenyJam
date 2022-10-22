@@ -22,7 +22,6 @@ public class PlayerEntity : Entity
     public void GetTurn()
     {
         FindMovableGrids();
-        _inputManager.InputInitialize(OnChoose);
         _inputManager.enabled = true;
     }
     private void FindMovableGrids()
@@ -68,15 +67,14 @@ public class PlayerEntity : Entity
             }
         }
     }
-    private void OnChoose(GridElement _choosedGrid)
+    public void StopMove()
     {
+        _inputManager.enabled = false;
         foreach (var item in _highlightedGrids)
         {
             item.MakeHighlight(HighlightMode.Normal);
             item.gameObject.layer = LayerMask.NameToLayer("Default");
         }
         _highlightedGrids.Clear();
-        _inputManager.enabled = false;
-        _turnBasedEntity.TurnFinished();
     }
 }

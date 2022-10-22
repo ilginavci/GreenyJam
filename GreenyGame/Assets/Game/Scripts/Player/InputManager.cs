@@ -8,17 +8,12 @@ public class InputManager : ComponentBase
     [SerializeField] private Camera _cam;
     [SerializeField] private string _clickableLayer;
     [SerializeField] private PlayerBehaviour_Movement _movement;
-    private event Action<GridElement> _chooseAction;
+    [SerializeField] private PlayerEntity _playerEntity;
     GridElement _onHoverGrid;
-    public void InputInitialize(Action<GridElement> _onChoose)
-    {
-        _chooseAction = _onChoose;
-    }
+
     protected override void OnDisable()
     {
         base.OnDisable();
-        //_chooseAction?.Invoke(_onHoverGrid);
-        //_chooseAction = null;
 
         if (_onHoverGrid !=null)
         {
@@ -27,7 +22,7 @@ public class InputManager : ComponentBase
     }
     void Update()
     {
-        GetGrid();
+       GetGrid();
     }
 
     void GetGrid()
@@ -66,10 +61,10 @@ public class InputManager : ComponentBase
     {
         if (_clickedGrid != null)
         {
+            _playerEntity.StopMove();
             _clickedGrid.SetHighlightMode(HighlightMode.Normal);
-            _movement.GoToGrid(_clickedGrid, _chooseAction);
-            _chooseAction?.Invoke(_clickedGrid);
-            _chooseAction = null;
+            _movement.GoToGrid(_clickedGrid);
+        
         }
     }
 }

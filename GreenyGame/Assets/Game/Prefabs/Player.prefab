@@ -50,6 +50,7 @@ MonoBehaviour:
   _cam: {fileID: 0}
   _clickableLayer: Movable
   _movement: {fileID: 2277165891362830414}
+  _playerEntity: {fileID: 2277165891362830413}
 --- !u!114 &2277165891362830414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +64,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerEntity: {fileID: 2277165891362830413}
+  _turnBasedEntity: {fileID: 3185929098142190091}
+  _speed: 4
+  _jumpPow: 2
+  _jumpSpeed: 1
 --- !u!114 &2277165891362830413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +86,7 @@ MonoBehaviour:
   _firstPos: {x: 0, y: 0}
   _inputManager: {fileID: 2277165891362830415}
   _movableLayer: Movable
+  _turnBasedEntity: {fileID: 3185929098142190091}
 --- !u!114 &3185929098142190091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,6 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3debe7663a18af44a5f91446853d61b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _freezeRoundNumber: 2
+  _playerEntity: {fileID: 2277165891362830413}
+  _turnBasedController: {fileID: 0}
 --- !u!1 &2277165892048015206
 GameObject:
   m_ObjectHideFlags: 0
