@@ -7,11 +7,11 @@ public enum EntityType
     Player,
     Bomb,
     CollectableItem,
-
 }
 
 public class Entity : ComponentBase
 {
-    public Grid _currentGrid;
+    public GridElement _currentGrid;
+    public BoardBehaviour _boardBehaviour;
     public EntityType _type;
 }
