@@ -7,16 +7,19 @@ public class PlayerEntity : Entity
     [SerializeField] private Vector2Int _firstPos;
     [SerializeField] private InputManager _inputManager;
     [SerializeField] private string _movableLayer;
-    List<GridElement> _highlightedGrids= new List<GridElement>();
-    public bool _turn = false;
-    private void OnValidate()
-    {
-        if(_turn)
-        {
-            _turn = false;
+    List<GridElement> _highlightedGrids = new List<GridElement>();
+    private bool _isTurn = false;
+    public bool IsTurn{
+
+        get{ return _isTurn; }
+
+        set{
+            _isTurn = false;
             GetTurn();
         }
+        
     }
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -25,7 +28,6 @@ public class PlayerEntity : Entity
         _currentGrid = grid;
         _currentGrid.SetBusy(this);
 
-        //GetTurn();
     }
     public void GetTurn()
     {
@@ -69,14 +71,9 @@ public class PlayerEntity : Entity
             }
             else if(_grid._entity._type == EntityType.Player)
             {
-                print(_grid.position);
-                print(_currentGrid.position);
                 Vector2Int sub = _grid.position - _currentGrid.position;
-                print(sub);
                 sub *= 2;
-                print(sub);
                 Vector2Int newGridPos = _currentGrid.position + sub;
-                print(newGridPos);
                 TrySetMovable(newGridPos);
             }
         }
