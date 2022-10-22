@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class PlayerBehaviour_Movement : MonoBehaviour
 {
    [SerializeField] Entity _playerEntity;
-   public void GoToGrid(GridElement _nextGrid)
+   public void GoToGrid(GridElement _nextGrid, Action<GridElement> OnMoveCompleted)
    {
         if (_playerEntity._currentGrid != null)
         {

@@ -7,18 +7,8 @@ public class PlayerEntity : Entity
     [SerializeField] private Vector2Int _firstPos;
     [SerializeField] private InputManager _inputManager;
     [SerializeField] private string _movableLayer;
+    [SerializeField] private TurnBasedEntity _turnBasedEntity;
     List<GridElement> _highlightedGrids = new List<GridElement>();
-    private bool _isTurn = false;
-    public bool IsTurn{
-
-        get{ return _isTurn; }
-
-        set{
-            _isTurn = false;
-            GetTurn();
-        }
-        
-    }
 
     protected override void OnEnable()
     {
@@ -32,12 +22,12 @@ public class PlayerEntity : Entity
     public void GetTurn()
     {
         FindMovableGrids();
-        _inputManager.enabled = true;
         _inputManager.InputInitialize(OnChoose);
+        _inputManager.enabled = true;
     }
     private void FindMovableGrids()
     {
-        if (_currentGrid == null) return; 
+        if (_currentGrid == null) return;
         Vector2Int pos = _currentGrid.position;
         Vector2Int tempPos = pos;
         tempPos.x--;
@@ -87,6 +77,6 @@ public class PlayerEntity : Entity
         }
         _highlightedGrids.Clear();
         _inputManager.enabled = false;
-        //GetTurn();
+        _turnBasedEntity.TurnFinished();
     }
 }

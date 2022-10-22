@@ -17,7 +17,8 @@ public class InputManager : ComponentBase
     protected override void OnDisable()
     {
         base.OnDisable();
-        _chooseAction?.Invoke(_onHoverGrid);
+        //_chooseAction?.Invoke(_onHoverGrid);
+        //_chooseAction = null;
 
         if (_onHoverGrid !=null)
         {
@@ -66,8 +67,9 @@ public class InputManager : ComponentBase
         if (_clickedGrid != null)
         {
             _clickedGrid.SetHighlightMode(HighlightMode.Normal);
-            _movement.GoToGrid(_clickedGrid);
+            _movement.GoToGrid(_clickedGrid, _chooseAction);
             _chooseAction?.Invoke(_clickedGrid);
+            _chooseAction = null;
         }
     }
 }
