@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,8 +16,9 @@ public class PlayerEntity : Entity
         base.OnEnable();
         var grid = _boardBehaviour.GetGrid(_firstPos);
         transform.position = new Vector3(_firstPos.x, transform.position.y, _firstPos.y);
-        _currentGrid = grid;
-        _currentGrid.SetBusy(this);
+
+        SetGrid(grid);
+        
 
     }
     public void GetTurn()
@@ -58,7 +60,7 @@ public class PlayerEntity : Entity
                 _grid.SetHighlightMode(HighlightMode.Movable);
                 _grid.gameObject.layer = LayerMask.NameToLayer(_movableLayer);
             }
-            else if(_grid._entity._type == EntityType.Player)
+            else if(_grid._entity._type == EntityType.Player1 || _grid._entity._type == EntityType.Player2)
             {
                 Vector2Int sub = _grid.position - _currentGrid.position;
                 sub *= 2;
@@ -76,5 +78,25 @@ public class PlayerEntity : Entity
             item.gameObject.layer = LayerMask.NameToLayer("Default");
         }
         _highlightedGrids.Clear();
+    }
+    public void SetGrid(GridElement _grid)
+    {
+        _currentGrid = _grid;
+        _currentGrid._entity = this;
+        transform.SetParent(_currentGrid.transform);
+
+        _grid.SetBusy();
+    }
+
+    public void ReleaseGrid(GridElement _grid)
+    {
+        _grid._entity = null;
+        _grid.SetAvailable();
+        transform.SetParent(null);
+    }
+    public override void Shocked(EntityType _srcType)
+    {
+        transform.DOJump(transform.position, 1, 1, 1);
+        _turnBasedEntity.FreezeEntity();
     }
 }

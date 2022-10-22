@@ -9,6 +9,7 @@ public class InputManager : ComponentBase
     [SerializeField] private string _clickableLayer;
     [SerializeField] private PlayerBehaviour_Movement _movement;
     [SerializeField] private PlayerEntity _playerEntity;
+    [SerializeField] private Power_Earthquake _earthquake;
     GridElement _onHoverGrid;
 
     protected override void OnDisable()
@@ -22,6 +23,10 @@ public class InputManager : ComponentBase
     }
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            ChoosePower();
+        }
        GetGrid();
     }
 
@@ -66,5 +71,15 @@ public class InputManager : ComponentBase
             _movement.GoToGrid(_clickedGrid);
         
         }
+    }
+    private void ChoosePower()
+    {
+        if (_onHoverGrid != null)
+        {
+            _onHoverGrid.SetDefaultHighlight();
+            _onHoverGrid = null;
+        }
+        _playerEntity.StopMove();
+        _earthquake.StartEartQuake(_playerEntity._currentGrid, _playerEntity._type);
     }
 }

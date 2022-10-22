@@ -48,7 +48,7 @@ public class GridElement : ComponentBase
     {
         if (_entity == null) return true;
 
-        if (_entity._type == EntityType.Player) return false;
+        if (_entity._type == EntityType.Player1 || _entity._type == EntityType.Player2) return false;
 
         return true;
     }

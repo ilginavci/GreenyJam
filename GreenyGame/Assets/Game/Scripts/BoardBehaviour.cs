@@ -14,7 +14,7 @@ public class GridContainer
 }
 public class BoardBehaviour : ComponentBase
 {
-    public GridElement _block;
+    public GridElement[] _blocks;
     [SerializeField] int _boardSize;
     public GridContainer[] _board;
 
@@ -74,9 +74,14 @@ public class BoardBehaviour : ComponentBase
             for (int y = 0; y < _board[x].columns.Length; y++)
             {
                 Vector2Int _pos = new Vector2Int(x, y);
-                GridElement _instantiatedGrid = Instantiate(_block, transform);
+                GridElement _instantiatedGrid = Instantiate(_blocks[Random.Range(0, _blocks.Length)], transform);
+                
                 _instantiatedGrid.position = _pos;
                 _instantiatedGrid.transform.localPosition = new Vector3(_pos.x, 0, _pos.y);
+
+                Vector3 rotation = Vector3.zero;
+                rotation.y = 90 * Random.Range(0, 4);
+                _instantiatedGrid.transform.localRotation = Quaternion.Euler(rotation);
 
                 _board[_pos.x].columns[_pos.y] = _instantiatedGrid;
                 _emptyGrids.Add(_instantiatedGrid);

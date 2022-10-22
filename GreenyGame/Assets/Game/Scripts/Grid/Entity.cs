@@ -4,9 +4,11 @@ using UnityEngine;
 
 public enum EntityType
 {
-    Player,
+    Player1,
+    Player2,
+    Player1Item,
+    Player2Item,
     Bomb,
-    CollectableItem,
 }
 
 public class Entity : ComponentBase
@@ -14,4 +16,9 @@ public class Entity : ComponentBase
     public GridElement _currentGrid;
     public BoardBehaviour _boardBehaviour;
     public EntityType _type;
+
+    public virtual void Shocked(EntityType _sourceType)
+    {
+
+    }
 }

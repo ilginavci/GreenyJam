@@ -50,5 +50,16 @@ public class TurnBasedController : ComponentBase
             return player2;
         }
     }
+    public TurnBasedEntity GetPlayer(EntityType _type)
+    {
+        if (player1._playerEntity._type == _type)
+        {
+            return player1;
+        }
+        else
+        {
+            return player2;
+        }
+    }
 
 }
