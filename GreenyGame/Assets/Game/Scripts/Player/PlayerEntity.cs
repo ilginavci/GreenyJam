@@ -15,7 +15,7 @@ public class PlayerEntity : Entity
     {
         base.OnEnable();
         var grid = _boardBehaviour.GetGrid(_firstPos);
-        transform.position = new Vector3(_firstPos.x, transform.position.y, _firstPos.y);
+        transform.localPosition = new Vector3(_firstPos.x, transform.localPosition.y, _firstPos.y);
 
         SetGrid(grid);
         
@@ -96,7 +96,7 @@ public class PlayerEntity : Entity
     }
     public override void Shocked(EntityType _srcType)
     {
-        transform.DOJump(transform.position, 1, 1, 1);
+        transform.DOLocalJump(transform.localPosition, 1, 1, 1);
         _turnBasedEntity.FreezeEntity();
     }
 }

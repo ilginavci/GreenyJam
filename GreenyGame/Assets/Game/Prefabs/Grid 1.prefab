@@ -50,7 +50,7 @@ MonoBehaviour:
   _entity: {fileID: 0}
   _board: {fileID: 0}
   _gfx: {fileID: 2098269660135364935}
-  _normalHighlight: {fileID: 2100000, guid: e1233741b106a2a4ca91c0e7e3d250f1, type: 2}
+  _normalHighlight: {fileID: 2100000, guid: 05d9870dc4c0b354b847331a09d7d681, type: 2}
   _movableHighlight: {fileID: 2100000, guid: dfbb95168fd443140a09e669acd5c46a, type: 2}
   _onHoverHighlight: {fileID: 2100000, guid: 79be8ee47ffa4f14e93eba4bb826a2a6, type: 2}
 --- !u!54 &3063171566102353300

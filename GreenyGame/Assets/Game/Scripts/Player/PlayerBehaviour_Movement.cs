@@ -32,8 +32,8 @@ public class PlayerBehaviour_Movement : MonoBehaviour
         //Movement (Animation)
         if(_jump)
         {
-            Vector3 newPos = new Vector3(_playerEntity._currentGrid.position.x, transform.position.y, _playerEntity._currentGrid.position.y);
-            transform.DOJump(newPos, _jumpPow ,1,_jumpSpeed).SetEase(Ease.InOutQuad).
+            Vector3 newPos = new Vector3(0, transform.localPosition.y, 0);
+            transform.DOLocalJump(newPos, _jumpPow ,1,_jumpSpeed).SetEase(Ease.InOutQuad).
                 OnComplete(() =>
                 {
                     _turnBasedEntity.TurnFinished();
@@ -42,8 +42,8 @@ public class PlayerBehaviour_Movement : MonoBehaviour
         }
         else
         {
-            Vector3 newPos = new Vector3(_playerEntity._currentGrid.position.x, transform.position.y, _playerEntity._currentGrid.position.y);
-            transform.DOMove(newPos, _speed).SetEase(Ease.InOutQuad).SetSpeedBased().
+            Vector3 newPos = new Vector3(0, transform.localPosition.y, 0);
+            transform.DOLocalMove(newPos, _speed).SetEase(Ease.InOutQuad).SetSpeedBased().
                 OnComplete(()=> 
                 {
                     _turnBasedEntity.TurnFinished();

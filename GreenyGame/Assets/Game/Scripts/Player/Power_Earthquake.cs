@@ -45,7 +45,7 @@ public class Power_Earthquake : MonoBehaviour
             {
                 _grid._entity.Shocked(_sourceType);
             }
-            _grid.transform.DOJump(_grid.transform.position, (_pow*_pow), 1, _pow * .3f)
+            _grid.transform.DOLocalJump(_grid.transform.localPosition, (_pow*_pow), 1, _pow * .3f)
                 .OnComplete(
                 ()=> 
                 {
