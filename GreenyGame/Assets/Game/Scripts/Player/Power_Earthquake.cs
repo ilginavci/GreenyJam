@@ -6,17 +6,30 @@ using DG.Tweening;
 public class Power_Earthquake : MonoBehaviour
 {
     [SerializeField] BoardBehaviour _board;
-    [SerializeField] TurnBasedController turnBasedController;
     int earthquakeNumber;
     EntityType _sourceType;
     public void StartEartQuake(GridElement _currentGrid, EntityType srcType)
     {
+        StartCoroutine(StartEarthquakeProggress(_currentGrid, srcType));
+    }
+    IEnumerator StartEarthquakeProggress(GridElement _currentGrid, EntityType srcType)
+    {
+        if(srcType != EntityType.EarthquakePower)
+        {
+            float lenght= SoundManager.Instance.PlayAudio(AudioStates.QuakeUse, _sourceType);
+            yield return new WaitForSeconds(lenght-1);
+        }
+        InvokeEarthquake(_currentGrid, srcType);
+        yield return null;
+    }
+    private void InvokeEarthquake(GridElement _currentGrid, EntityType srcType)
+    {
         earthquakeNumber = 0;
         _sourceType = srcType;
-        StartCoroutine(EarthQuake(_currentGrid, new Vector2Int(1,0)));
-        StartCoroutine(EarthQuake(_currentGrid, new Vector2Int(0,1)));
-        StartCoroutine(EarthQuake(_currentGrid, new Vector2Int(-1,0)));
-        StartCoroutine(EarthQuake(_currentGrid, new Vector2Int(0,-1)));
+        StartCoroutine(EarthQuake(_currentGrid, new Vector2Int(1, 0)));
+        StartCoroutine(EarthQuake(_currentGrid, new Vector2Int(0, 1)));
+        StartCoroutine(EarthQuake(_currentGrid, new Vector2Int(-1, 0)));
+        StartCoroutine(EarthQuake(_currentGrid, new Vector2Int(0, -1)));
         StartCoroutine(CheckEarthquakeFinished());
     }
     IEnumerator CheckEarthquakeFinished()
@@ -26,8 +39,16 @@ public class Power_Earthquake : MonoBehaviour
     }
     public void OnEarthquakeFinished()
     {
-        var playerEntity = turnBasedController.GetPlayer(_sourceType);
-        playerEntity.TurnFinished();
+        if(_sourceType == EntityType.EarthquakePower)
+        {
+            TurnBasedController.Instance.OnTurnFinished();
+        }
+        else
+        {
+            var playerEntity = TurnBasedController.Instance.GetPlayer(_sourceType);
+            playerEntity._inventory.UpdateScore();
+            playerEntity.TurnFinished();
+        }
     }
     IEnumerator EarthQuake(GridElement _currentGrid, Vector2Int direction)
     {

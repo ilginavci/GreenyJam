@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2277165891362830414}
   - component: {fileID: 2277165891362830413}
   - component: {fileID: 3185929098142190091}
+  - component: {fileID: 578613313}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -51,6 +52,8 @@ MonoBehaviour:
   _clickableLayer: Movable
   _movement: {fileID: 2277165891362830414}
   _playerEntity: {fileID: 2277165891362830413}
+  _earthquake: {fileID: 0}
+  _inventory: {fileID: 578613313}
 --- !u!114 &2277165891362830414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,6 +68,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerEntity: {fileID: 2277165891362830413}
   _turnBasedEntity: {fileID: 3185929098142190091}
+  _inventory: {fileID: 578613313}
   _speed: 4
   _jumpPow: 2
   _jumpSpeed: 1
@@ -101,7 +105,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _freezeRoundNumber: 2
   _playerEntity: {fileID: 2277165891362830413}
-  _turnBasedController: {fileID: 0}
+  _inventory: {fileID: 578613313}
+--- !u!114 &578613313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2277165891362830412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3bbf25768b09ec42ba0f42e3489c142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 2277165891362830413}
+  _earnedScoreByCollectable: 10
+  _lostedScoreByCollectable: 10
+  _lostedScoreByLostingCollectable: 10
 --- !u!1 &2277165892048015206
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class TurnBasedEntity : ComponentBase
     [Header("TurnBasedSetting")]
     [SerializeField] int _freezeRoundNumber;
     public PlayerEntity _playerEntity;
-    [SerializeField] TurnBasedController _turnBasedController;
+    public PlayerInventory _inventory;
     public bool Freeze {
         get { return CheckFreeze(); }
         set { FreezeEntity(); }
@@ -22,7 +22,7 @@ public class TurnBasedEntity : ComponentBase
     }
     public void TurnFinished()
     {
-        _turnBasedController.OnTurnFinished();
+        TurnBasedController.Instance.OnTurnFinished();
     }
     private bool CheckFreeze()
     {

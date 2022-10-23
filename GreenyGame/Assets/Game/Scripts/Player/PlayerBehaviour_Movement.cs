@@ -8,7 +8,8 @@ public class PlayerBehaviour_Movement : MonoBehaviour
 {
    [SerializeField] PlayerEntity _playerEntity;
    [SerializeField] TurnBasedEntity _turnBasedEntity;
-   [SerializeField] float _speed;
+   [SerializeField] PlayerInventory _inventory;
+    [SerializeField] float _speed;
    [SerializeField] float _jumpPow;
    [SerializeField] float _jumpSpeed;
     public void GoToGrid(GridElement _nextGrid)
@@ -25,7 +26,12 @@ public class PlayerBehaviour_Movement : MonoBehaviour
                 _jump = true;
             }
         }
-        // Entity Check for points 
+        // Entity Check Entity On Grid
+        Entity entityOnGrid=null;
+        if(_nextGrid._entity != null)
+
+        { entityOnGrid = _nextGrid._entity;
+        }
 
         _playerEntity.SetGrid(_nextGrid);
 
@@ -36,7 +42,7 @@ public class PlayerBehaviour_Movement : MonoBehaviour
             transform.DOLocalJump(newPos, _jumpPow ,1,_jumpSpeed).SetEase(Ease.InOutQuad).
                 OnComplete(() =>
                 {
-                    _turnBasedEntity.TurnFinished();
+                    OnMoveCompleted(entityOnGrid);
                 }
             );
         }
@@ -46,11 +52,19 @@ public class PlayerBehaviour_Movement : MonoBehaviour
             transform.DOLocalMove(newPos, _speed).SetEase(Ease.InOutQuad).SetSpeedBased().
                 OnComplete(()=> 
                 {
-                    _turnBasedEntity.TurnFinished();
+                    OnMoveCompleted(entityOnGrid);
                 }
             );
         }
 
     }
-
+    void OnMoveCompleted(Entity entity)
+    {
+        if (entity != null)
+        {
+            entity.Collected(_inventory);
+        }
+        _inventory.UpdateScore();
+        _turnBasedEntity.TurnFinished();
+    }
 }

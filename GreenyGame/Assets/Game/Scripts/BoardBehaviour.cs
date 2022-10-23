@@ -106,5 +106,14 @@ public class BoardBehaviour : ComponentBase
         }
         return null;
     }
+    public GridElement GetRandomEmptyGrid()
+    {
+        if(_emptyGrids.Count == 0)
+        {
+            return null;
+        }
+        GridElement _randomGrid = _emptyGrids[Random.Range(0, _emptyGrids.Count)];
+        return _randomGrid;
+    }
 
 }

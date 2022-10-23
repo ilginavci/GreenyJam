@@ -10,6 +10,7 @@ public class InputManager : ComponentBase
     [SerializeField] private PlayerBehaviour_Movement _movement;
     [SerializeField] private PlayerEntity _playerEntity;
     [SerializeField] private Power_Earthquake _earthquake;
+    [SerializeField] private PlayerInventory _inventory;
     GridElement _onHoverGrid;
 
     protected override void OnDisable()
@@ -25,7 +26,7 @@ public class InputManager : ComponentBase
     {
         if(Input.GetKeyDown(KeyCode.X))
         {
-            ChoosePower();
+            ChooseEarthquake();
         }
        GetGrid();
     }
@@ -72,14 +73,21 @@ public class InputManager : ComponentBase
         
         }
     }
-    private void ChoosePower()
+    private void ChooseEarthquake()
     {
+        if (_inventory.EarthquakePower <= 0)
+        {
+            return;
+        }
+
         if (_onHoverGrid != null)
         {
             _onHoverGrid.SetDefaultHighlight();
             _onHoverGrid = null;
         }
         _playerEntity.StopMove();
+        
+        _inventory.EarthquakePower -= 1;
         _earthquake.StartEartQuake(_playerEntity._currentGrid, _playerEntity._type);
     }
 }
